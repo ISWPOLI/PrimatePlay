@@ -1,0 +1,45 @@
+@(message: String)
+@*
+* Call the `Main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Product"){
+
+  <div class="container  col-md-6 col-md-offset-3" >
+    <script type='text/javascript' src='@routes.Assets.versioned("js/index.js")'> </script>
+
+
+    <form action="@routes.UserController.addUser()" method="post" class="form-horizontal">
+
+      <div class="form-group">
+        <label for="productname">Nombre de Producto</label>
+        <input type="text" class="form-control" placeholder="Nombre de Producto" aria-describedby="basic-addon1" name="productname">
+      </div>
+      <div class="form-group">
+        <label for="quantity">Cantidad</label>
+        <input type="number" min="1" max="100" class="form-control" placeholder="Cantidad" aria-describedby="basic-addon1" name="quantity">
+      </div>
+      <div class="form-group">
+        <label for="description">Descripcion</label>
+        <input type="text" class="form-control" placeholder="Descripcion" aria-describedby="basic-addon1" name="description">
+      </div>
+      <div class="form-group">
+        <label for="price">Precio</label>
+        <input type="text" class="form-control" placeholder="Precio" aria-describedby="basic-addon1" name="price">
+      </div>
+        <div class="form-group">
+            <label for="price">Imagen</label>
+        <label class="btn btn-default btn-file">
+            Buscar <input type="file" style="display: none;">
+        </label>
+        </div>
+      @* <input type="text" name="name" />*@
+      <button type="submit" class="btn btn-primary">Ingresar</button>
+      @*<button>Add Person</button>*@
+      <ul id="persons"></ul>
+    </form>
+
+  </div>
+
+}
