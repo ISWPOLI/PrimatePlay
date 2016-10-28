@@ -7,9 +7,17 @@
 *@
 @main("New User"){
 
-  <div class="container  col-md-6 col-md-offset-4" style="background: #e6e6e6;" >
+  <div class="container col-md-6 col-md-offset-3" id="basicContainer">
+      <script type='text/javascript' src='@routes.Assets.versioned("js/users.js")'> </script>
+      <h1>Ingreso</h1>
+      <p>
+          Por favor ingrese su informacion para ser registrado en el sistema y pueda realizar sus pedido.
+      </p>
+
+
+
     <script type='text/javascript' src='@routes.Assets.versioned("js/index.js")'> </script>
-    @form(routes.UserController.addUser(), 'class -> "formhorizontal") {
+    @form(routes.UserController.addUser(), 'class -> "form-horizontal") {
       <div class="form-group">
         <div class="col-lg-6">
         <label for="pass">Email</label>

@@ -1,0 +1,48 @@
+@(message: String)
+@*
+* Call the `Main` template with two arguments. The first
+* argument is a `String` with the title of the page, the second
+* argument is an `Html` object containing the body of the page.
+*@
+@main("Catalog"){
+
+  <div class="container  col-md-8 col-md-offset-2"  id ="basicContainerCatalog">
+    <script type='text/javascript' src='@routes.Assets.versioned("js/index.js")'> </script>
+
+    <div id="row">
+    <div class="polaroid col-md-3 col-md-offset-1" id="cell">
+      <img src="@routes.Assets.versioned("images/1.jpg")" alt="Norway" >
+      <div class="container">
+        <p>Precio</p>
+        <button type="submit" class="btn btn-default"> <img src="@routes.Assets.versioned("images/car.png")" alt="Norway"></button>
+      </div>
+    </div>
+    <div class="polaroid col-md-3 col-md-offset-1" id="cell">
+      <img src="@routes.Assets.versioned("images/2.jpg")" alt="Norway" >
+      <div class="container">
+        <p>Precio</p>
+        <button type="submit" class="btn btn-default"> <img src="@routes.Assets.versioned("images/car.png")" alt="Norway" ></button>
+      </div>
+    </div>
+    <div class="polaroid col-md-3 col-md-offset-1" id="cell">
+      <img src="@routes.Assets.versioned("images/3.jpg")" alt="Norway">
+      <div class="container">
+        <p>Precio</p>
+        <button type="submit" class="btn btn-default"> <img src="@routes.Assets.versioned("images/car.png")" alt="Norway" ></button>
+      </div>
+    </div>
+      <div class="polaroid polaroid col-md-3 col-md-offset-1" id="cell">
+        <img src="@routes.Assets.versioned("images/4.jpg")" alt="Norway" >
+        <div class="container">
+          <p>Precio</p>
+          <button type="submit" class="btn btn-default"> <img src="@routes.Assets.versioned("images/car.png")" alt="Norway"></button>
+        </div>
+      </div>
+    </div>
+      
+
+
+
+  </div>
+
+}

@@ -4,6 +4,8 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
+GET     /home                       controllers.HomeController.home()
+GET     /catalog                       controllers.HomeController.catalog()
 POST    /person                     controllers.HomeController.addPerson()
 GET     /persons                    controllers.HomeController.getPersons()
 

@@ -18,63 +18,24 @@ import java.util.List;
 @Entity
 public class User extends Model{
     @Id
-    private Long id;
+    public Long id;
     @Constraints.Required
     @Constraints.Email
     @Formats.NonEmpty
-    private String email;
+    public String email;
     @Constraints.Required
     @Formats.NonEmpty
-    private String username;
+    public String username;
     @Constraints.Required
     @Formats.NonEmpty
     @Constraints.MinLength(6)
     @Constraints.MaxLength(20)
-    private String pass;
+    public String pass;
     @Constraints.Required
     @Formats.NonEmpty
-    private String passconf;
+    public String passconf;
 
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getPassconf() {
-        return passconf;
-    }
-
-    public void setPassconf(String passconf) {
-        this.passconf = passconf;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 //queries
     public static  Model.Finder<String, User> find = new Model.Finder(String.class, User.class);

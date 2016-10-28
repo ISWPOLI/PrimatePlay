@@ -30,6 +30,11 @@ public class HomeController extends Controller {
         return ok(index.render("Hello world!"));
     }
 
+    public Result home() { return ok(home.render("Home"));
+    }
+    public Result catalog() { return ok(catalog.render("catalog"));
+    }
+
     public Result addPerson(){
         Person person = Form.form(Person.class).bindFromRequest().get();
         person.save();
