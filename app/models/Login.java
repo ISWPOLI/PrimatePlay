@@ -1,6 +1,7 @@
 package models;
 
 import com.avaje.ebean.Model;
+import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.data.validation.ValidationError;
 
@@ -13,9 +14,13 @@ import java.util.List;
 public class Login extends Model{
 
     @Constraints.Required (message = "Please enter username")
+    @Constraints.Email
+    @Formats.NonEmpty
     public String loginemail;
     @Constraints.Required (message = "Please enter password ")
-    public String loginpass;
+    @Constraints.MinLength(6)
+    @Constraints.MaxLength(20)
+    public String loginpassword;
 
 
     public static  Model.Finder<String, User> find = new Model.Finder(String.class, User.class);

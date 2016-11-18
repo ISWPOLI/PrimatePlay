@@ -22,11 +22,12 @@ public class LoginController extends Controller {
 
     public Result validate() {
         Form<Login> formulario = formFactory.form(Login.class);
-        /*if(formulario.hasErrors()){
-            return badRequest(views.html.index.render("error",formulario));
-        }else {*/
+        formulario.bindFromRequest().get();
+        if(formulario.hasErrors()){
+            return ok("/");
+        }else {
 
-            User aux = (formulario.bindFromRequest().get()).authenticate((formulario.bindFromRequest().get()).loginemail, (formulario.bindFromRequest().get()).loginpass);
+            User aux = (formulario.bindFromRequest().get()).authenticate((formulario.bindFromRequest().get()).loginemail, (formulario.bindFromRequest().get()).loginpassword);
             if (aux != null) {
                 return ok(
                         main.render("login", Html.apply("Ingresaste Exitosamente")));
@@ -37,7 +38,7 @@ public class LoginController extends Controller {
 
             }
         }
-    //}
+    }
 
     public Result load(){
         return redirect("/");

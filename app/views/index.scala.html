@@ -1,10 +1,6 @@
-@(message: String, form: Form[Login])
-@*
- * Call the `Main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
-*
-*@
+@import sun.security.jgss.GSSUtil
+@(message: String, loginform: Form[Login])
+@import helper._
 @*
 @if(form.hasErrors){
 
@@ -21,17 +17,17 @@
         </div>
 }
 *@
-@main("index"){
+@main(null){
 
-    <div class="container  col-md-6 col-md-offset-3"  id="basicContainer" >
-        <script type='text/javascript' src='@routes.Assets.versioned("js/index.js")'> </script>
+    @main(null) {
+        <div class="container  col-md-6 col-md-offset-3"  id="basicContainer" >
+            <script type='text/javascript' src='@routes.Assets.versioned("js/index.js")'> </script>
+        @form(routes.LoginController.validate()) {
 
-
-        <form action="@routes.LoginController.validate()" method="post" class="form-inline">
-            @if(form.hasErrors) {
+            @if(loginform.hasErrors) {
                 <div class="alert alert-error">
-                @if(form.errors.size() > 0) {
-                    @for((key, value) <- form.errors) {
+                @if(loginform.errors.size() > 0) {
+                    @for((key, value) <- loginform.errors) {
                         @for(err <- value) {
                             <p>@key.toString() &rarr; @err.message()</p>
                         }
@@ -40,10 +36,53 @@
                 </div>
             }
 
+            <fieldset>
+                @inputText(loginform("loginemail"))
+                @inputPassword(loginform("loginpassword"))
+            </fieldset>
+            <input type="submit" value="Submit">
+        }
+
+            </div>
+            }
 
 
 
-            <div class="form-group">
+
+
+
+
+
+
+@*
+
+
+@helper.form(routes.LoginController.validate(), 'class -> "form-horizontal") {
+@if(form.hasErrors) {
+<div class="alert alert-error">
+@if(form.errors.size() > 0) {
+@for((key, value) <- form.errors) {
+@for(err <- value) {
+<p>@key.toString() &rarr; @err.message()</p>
+}
+}
+} else {No error returned.}
+</div>
+}
+
+@helper.inputText(myForm("email"))
+
+@helper.inputPassword(myForm("password"))
+
+
+<input type="submit" value="Submit">
+
+
+
+
+}
+
+<div class="form-group">
                 <label for="name">Nombre</label>
             <input type="text" class="form-control" placeholder="Nombre de Usuario" aria-describedby="basic-addon1" name="name">
             </div>
@@ -51,14 +90,14 @@
                 <label for="password">Contraseña</label>
                 <input type="text" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1" name="password">
             </div>
-           @* <input type="text" name="name" />*@
+
             <button type="submit" class="btn btn-primary">Ingresar</button>
-            @*<button>Add Person</button>*@
+
             <ul id="persons"></ul>
         </form>
 
     </div>
-
+*@
 }
 
     @*
