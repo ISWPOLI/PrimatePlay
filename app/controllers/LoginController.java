@@ -1,6 +1,7 @@
 package controllers;
 
 import models.User;
+import models.Login;
 import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
@@ -20,20 +21,23 @@ public class LoginController extends Controller {
 
 
     public Result validate() {
-        Form<User> formulario = formFactory.form(User.class);
-        User aux = (formulario.bindFromRequest().get()).authenticate((formulario.bindFromRequest().get()).email, (formulario.bindFromRequest().get()).pass);
-        if (aux != null) {
-            flash("success", "Computer has been deleted");
-            return ok(
-                    main.render("login", Html.apply("Ingresaste Exitosamente")));
-        } else {
+        Form<Login> formulario = formFactory.form(Login.class);
+        /*if(formulario.hasErrors()){
+            return badRequest(views.html.index.render("error",formulario));
+        }else {*/
+
+            User aux = (formulario.bindFromRequest().get()).authenticate((formulario.bindFromRequest().get()).loginemail, (formulario.bindFromRequest().get()).loginpass);
+            if (aux != null) {
+                return ok(
+                        main.render("login", Html.apply("Ingresaste Exitosamente")));
+            } else {
 
 
-            return redirect(routes.UserController.load());
+                return redirect(routes.UserController.load());
 
+            }
         }
-
-    }
+    //}
 
     public Result load(){
         return redirect("/");

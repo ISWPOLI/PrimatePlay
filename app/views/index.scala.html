@@ -1,8 +1,25 @@
-@(message: String)
+@(message: String, form: Form[Login])
 @*
  * Call the `Main` template with two arguments. The first
  * argument is a `String` with the title of the page, the second
  * argument is an `Html` object containing the body of the page.
+*
+*@
+@*
+@if(form.hasErrors){
+
+    <div class="alert alert-error">
+        <a class="close" data-dismiss="alert">x</a>
+        @if(form.errors.size() > 0) {
+        @for((key, value) <- form.errors) {
+            @key.toString() :
+            @for(err <- value) {
+                @err.message().toString()
+            }
+        }
+    }else {}
+        </div>
+}
 *@
 @main("index"){
 
@@ -10,7 +27,22 @@
         <script type='text/javascript' src='@routes.Assets.versioned("js/index.js")'> </script>
 
 
-        <form action="@routes.HomeController.addPerson()" method="post" class="form-inline">
+        <form action="@routes.LoginController.validate()" method="post" class="form-inline">
+            @if(form.hasErrors) {
+                <div class="alert alert-error">
+                @if(form.errors.size() > 0) {
+                    @for((key, value) <- form.errors) {
+                        @for(err <- value) {
+                            <p>@key.toString() &rarr; @err.message()</p>
+                        }
+                    }
+                } else {No error returned.}
+                </div>
+            }
+
+
+
+
             <div class="form-group">
                 <label for="name">Nombre</label>
             <input type="text" class="form-control" placeholder="Nombre de Usuario" aria-describedby="basic-addon1" name="name">
@@ -21,7 +53,7 @@
             </div>
            @* <input type="text" name="name" />*@
             <button type="submit" class="btn btn-primary">Ingresar</button>
-             @*<button>Add Person</button>*@
+            @*<button>Add Person</button>*@
             <ul id="persons"></ul>
         </form>
 

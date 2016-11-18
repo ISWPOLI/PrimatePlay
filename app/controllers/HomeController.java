@@ -4,11 +4,13 @@ package controllers;
 import com.avaje.ebean.Model;
 import models.Person;
 import models.User;
-import play.data.Form;
+import models.Login;
+import play.data.*;
 import play.mvc.*;
 import views.html.*;
 
 
+import javax.inject.Inject;
 import java.util.List;
 
 import static play.libs.Json.toJson;
@@ -17,6 +19,8 @@ import static play.libs.Json.toJson;
  * to the application's home page.
  */
 public class HomeController extends Controller {
+    @Inject
+    FormFactory formFactory;
 
     /**
      * An action that renders an HTML page with a welcome message.
@@ -27,7 +31,9 @@ public class HomeController extends Controller {
 
 
     public Result index() {
-        return ok(index.render("Hello world!"));
+        Form<Login> aux = formFactory.form(Login.class);
+
+        return ok(index.render("Hello world!", aux));
     }
 
     public Result home() { return ok(home.render("Home"));
