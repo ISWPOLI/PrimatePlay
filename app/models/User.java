@@ -38,7 +38,7 @@ public class User extends Model{
 
 
 //queries
-    public static  Model.Finder<String, User> find = new Model.Finder(String.class, User.class);
+    public static  Model.Finder<Long, User> find = new Model.Finder(Long.class, User.class);
 
 //***Retrieve all the User **//
 

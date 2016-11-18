@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.Login;
 import org.junit.*;
 
+import play.data.Form;
+import play.data.FormFactory;
 import play.mvc.*;
 import play.test.*;
 import play.data.DynamicForm;
@@ -15,6 +18,8 @@ import play.i18n.Lang;
 import play.libs.F;
 import play.libs.F.*;
 import play.twirl.api.Content;
+
+import javax.inject.Inject;
 
 import static play.test.Helpers.*;
 import static org.junit.Assert.*;
@@ -27,6 +32,8 @@ import static org.junit.Assert.*;
  *
  */
 public class ApplicationTest {
+    @Inject
+    FormFactory formFactory;
 
     @Test
     public void simpleCheck() {
@@ -36,7 +43,8 @@ public class ApplicationTest {
 
     @Test
     public void renderTemplate() {
-        Content html = views.html.index.render("Your new application is ready.");
+        Form<Login> formulario = formFactory.form(Login.class);
+        Content html = views.html.index.render("Your new application is ready.", formulario );
         assertEquals("text/html", html.contentType());
         assertTrue(html.body().contains("Your new application is ready."));
     }
