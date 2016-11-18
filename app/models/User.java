@@ -42,4 +42,17 @@ public class User extends Model{
 
 //***Retrieve all the User **//
 
+
+    public static User authenticate(String email, String clearPassword)  {
+
+        // get the user with email only to keep the salt password
+        User user = find.where().eq("email", email).findUnique();
+        if (user != null) {
+            // get the hash password from the salt + clear password
+            return user;
+
+        }
+        return null;
+    }
+
 }
