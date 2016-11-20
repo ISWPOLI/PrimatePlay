@@ -10,24 +10,22 @@ create table person (
 );
 
 create table product (
-  id                            bigint not null,
+  id                            bigint auto_increment not null,
   productname                   varchar(255),
   quantity                      integer,
   description                   varchar(255),
   price                         decimal(38),
   constraint pk_product primary key (id)
 );
-create sequence product_seq;
 
 create table user (
-  id                            bigint not null,
+  id                            bigint auto_increment not null,
   email                         varchar(255),
   username                      varchar(255),
   pass                          varchar(255),
   passconf                      varchar(255),
   constraint pk_user primary key (id)
 );
-create sequence user_seq;
 
 
 # --- !Downs
@@ -35,8 +33,6 @@ create sequence user_seq;
 drop table if exists person;
 
 drop table if exists product;
-drop sequence if exists product_seq;
 
 drop table if exists user;
-drop sequence if exists user_seq;
 

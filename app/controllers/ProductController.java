@@ -8,7 +8,7 @@ import play.data.Form;
 import play.data.FormFactory;
 import play.mvc.Controller;
 import play.mvc.Result;
-import views.html.product;
+import views.html.*;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -32,7 +32,7 @@ public class ProductController extends Controller{
     }
 
     public Result getProducts(){
-        List<Product> products = new Model.Finder(String.class, product.class).all();
+        List<Product> products = new Model.Finder(String.class, Product.class).all();
         return ok(toJson(products));
 
     }

@@ -7,7 +7,7 @@ GET     /                           controllers.HomeController.index()
 GET     /home                       controllers.HomeController.home()
 GET     /catalog                       controllers.HomeController.catalog()
 #POST    /person                     controllers.HomeController.addPerson()
-#GET     /persons                    controllers.HomeController.getPersons()
+GET     /persons                    controllers.HomeController.getPersons()
 
 GET     /user                       controllers.UserController.load()
 POST    /userpost                   controllers.UserController.addUser()
@@ -16,7 +16,8 @@ GET     /users                      controllers.UserController.getUsers()
 
 GET     /product                       controllers.ProductController.loadProduct()
 POST    /productpost                   controllers.ProductController.addProduct()
-GET     /products                      controllers.ProductController.getProducts()
+GET     /products                     controllers.ProductController.getProducts()
+
 
 POST  /login                         controllers.LoginController.validate()
 

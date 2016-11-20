@@ -1,9 +1,6 @@
-@(message: String)
-@*
-* Call the `Main` template with two arguments. The first
-* argument is a `String` with the title of the page, the second
-* argument is an `Html` object containing the body of the page.
-*@
+@(formulario: Form[Pago]))
+
+
 @main("Product"){
 
   <div class="container  col-md-6 col-md-offset-3" id="basicContainer" >
@@ -33,12 +30,12 @@
         <label for="price">Precio</label>
         <input type="text" class="form-control" placeholder="Precio" aria-describedby="basic-addon1" name="price">
       </div>
-        <div class="form-group">
-            <label for="price">Imagen</label>
+      <div class="form-group">
+        <label for="price">Imagen</label>
         <label class="btn btn-default btn-file">
-            Buscar <input type="file" style="display: none;">
+          Buscar <input type="file" style="display: none;">
         </label>
-        </div>
+      </div>
       @* <input type="text" name="name" />*@
       <button type="submit" class="btn btn-primary">Ingresar</button>
       @*<button>Add Person</button>*@

@@ -18,4 +18,7 @@ public class Product extends Model {
     public String description;
     public BigDecimal price;
 
+
+    public static  Model.Finder<Long, Product> find = new Model.Finder(Long.class, Product.class);
+
 }
