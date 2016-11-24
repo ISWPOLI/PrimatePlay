@@ -1,12 +1,11 @@
 package controllers;
 
-import akka.util.ByteString;
+
 import com.avaje.ebean.Model;
-import com.avaje.ebeaninternal.util.IOUtils;
-import controllers.*;
+
 import models.Product;
-import models.User;
-import play.api.Play;
+
+import org.apache.commons.io.FileUtils;
 import play.mvc.Http.MultipartFormData;
 import play.mvc.Http.MultipartFormData.FilePart;
 import play.data.Form;
@@ -17,13 +16,12 @@ import views.html.*;
 
 import javax.inject.Inject;
 import java.io.File;
-import java.io.FileInputStream;
+
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+
 import java.util.List;
+
+
 
 import static play.libs.Json.toJson;
 
@@ -42,15 +40,13 @@ public class ProductController extends Controller{
         FilePart<File> picture = body.getFile("picture");
         String fileName = picture.getFilename();
         if(picture != null) {
-            File file = picture.getFile();
-           boolean aux; //Si ya se guardo en el servidor
-           final String imgPathToSave= "/public/images/"+ "default.jpg";
-          //Guardar en el disco
-            Path a = file.toPath();
-            Path ab= Paths.get("/public/images/", ("copy_" + fileName));
-           try( Files.copy(a, ab), StandardCopyOption.REPLACE_EXISTING);
-            Files.deleteIfExists(file.toPath());
-            )
+            try{
+                File file = picture.getFile();
+                File destination = new File("/WorkSpace/PrimatePlayPoli/public/images", fileName+"");
+                FileUtils.moveFile(file, destination);
+            }catch (IOException ex){
+
+            }
 
 
             Product product = Form.form(Product.class).bindFromRequest().get();
