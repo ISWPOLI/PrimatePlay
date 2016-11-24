@@ -15,6 +15,7 @@ create table product (
   quantity                      integer,
   description                   varchar(255),
   price                         decimal(38),
+  image                         varchar(255),
   constraint pk_product primary key (id)
 );
 

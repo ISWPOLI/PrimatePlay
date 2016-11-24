@@ -1,4 +1,5 @@
 @(message: String)
+@import helper._
 @*
 * Call the `Main` template with two arguments. The first
 * argument is a `String` with the title of the page, the second
@@ -14,8 +15,7 @@
       Por favor ingrese la informacion del producto que se desplegara en el catalogo como producto disponible.
     </p>
 
-
-    <form action="@routes.ProductController.addProduct()" method="post" class="form-horizontal">
+    @form(routes.ProductController.addProduct(), 'class -> "form-horizontal", 'enctype -> "multipart/form-data") {
 
       <div class="form-group">
         <label for="productname">Nombre de Producto</label>
@@ -36,15 +36,14 @@
         <div class="form-group">
             <label for="price">Imagen</label>
         <label class="btn btn-default btn-file">
-            Buscar <input type="file" style="display: none;">
+              Buscar <input type="file" style="display: none;" name="picture">
         </label>
         </div>
       @* <input type="text" name="name" />*@
       <button type="submit" class="btn btn-primary">Ingresar</button>
       @*<button>Add Person</button>*@
       <ul id="products"></ul>
-    </form>
-
+    }
   </div>
 
 }

@@ -17,6 +17,7 @@ public class Product extends Model {
     public int quantity;
     public String description;
     public BigDecimal price;
+    public String image;
 
 
     public static  Model.Finder<Long, Product> find = new Model.Finder(Long.class, Product.class);
