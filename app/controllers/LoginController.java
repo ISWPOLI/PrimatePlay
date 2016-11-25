@@ -45,4 +45,11 @@ public class LoginController extends Controller {
         return redirect("/");
     }
 
+    public Result logout() {
+        Form<Login> formulario = formFactory.form(Login.class);
+        session().remove("connected");
+        return ok( index.render("login", formulario));
+    }
+
 }
+

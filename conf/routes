@@ -20,6 +20,7 @@ GET     /products                     controllers.ProductController.getProducts(
 
 
 POST  /login                         controllers.LoginController.validate()
+GET   /logout                        controllers.LoginController.logout()
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
@@ -28,13 +29,3 @@ GET     /message                    controllers.AsyncController.message
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 GET     /car                        controllers.Assets.at(path="/public", file="/images/car.png")
-GET     /1                        controllers.Assets.at(path="/public", file="/images/1.jpg")
-GET     /2                        controllers.Assets.at(path="/public", file="/images/2.jpg")
-GET     /3                        controllers.Assets.at(path="/public", file="/images/3.jpg")
-GET     /4                        controllers.Assets.at(path="/public", file="/images/4.jpg")
-GET     /5                        controllers.Assets.at(path="/public", file="/images/5.jpg")
-GET     /6                        controllers.Assets.at(path="/public", file="/images/6.jpg")
-GET     /7                        controllers.Assets.at(path="/public", file="/images/7.jpg")
-GET     /8                        controllers.Assets.at(path="/public", file="/images/8.jpg")
-GET     /9                        controllers.Assets.at(path="/public", file="/images/9.jpg")
-GET     /10                        controllers.Assets.at(path="/public", file="/images/10.jpg")
