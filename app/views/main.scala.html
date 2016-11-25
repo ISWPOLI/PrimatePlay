@@ -1,4 +1,5 @@
 @(title: String)(content: Html)
+@import views.html.includes._
 
 <!DOCTYPE html>
 
@@ -36,6 +37,8 @@
                         <li><a href="/">Login</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                            @includes.userMenu()
+<!--
                             <ul class="dropdown-menu">
                                 <li><a href="#">Action</a></li>
                                 <li><a href="#">Another action</a></li>
@@ -45,6 +48,7 @@
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
+                            -->
                         </li>
                     </ul>
                     <form class="navbar-form navbar-left">
@@ -61,5 +65,19 @@
             </div><!-- /.container-fluid -->
         </nav>
         @content
+        <footer class="footer">
+            <div class="container">
+                @defining({new Date().format("dd/MM/yyyy - hh:mm")}) {fecha =>
+                        @if(session.get("connected") !=null){
+                            @session.get("connected") -
+                        }
+                    @fecha - Desarrollado en PlayFramework 2.5.x - Alejandro Daza 2016 - Todos los derechos reservados
+                }
+
+
+
+
+            </div>
+        </footer>
     </body>
 </html>

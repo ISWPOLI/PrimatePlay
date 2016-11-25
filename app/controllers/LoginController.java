@@ -29,7 +29,9 @@ public class LoginController extends Controller {
 
             User aux = (formulario.bindFromRequest().get()).authenticate((formulario.bindFromRequest().get()).loginemail, (formulario.bindFromRequest().get()).loginpassword);
             if (aux != null) {
+                session("connected", aux.email);
                 return ok(
+
                         main.render("login", Html.apply("Ingresaste Exitosamente")));
             } else {
 

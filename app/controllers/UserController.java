@@ -39,7 +39,7 @@ public class UserController extends Controller{
     }
 
     public Result getUsers(){
-        List<User> users = new Model.Finder(String.class, user.class).all();
+        List<User> users = new Model.Finder(String.class, User.class).all();
         return ok(toJson(users));
 
     }

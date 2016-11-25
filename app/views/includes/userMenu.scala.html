@@ -1,0 +1,13 @@
+@if(session.get("connected")== null){
+  <ul class="dropdown-menu">
+    <li><a href="#">Ingresar</a></li>
+  </ul>
+} else {
+  <ul class="dropdown-menu">
+    <li><a href="#">Perfil</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Salir</a></li>
+  </ul>
+
+
+}
