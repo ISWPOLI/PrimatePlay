@@ -24,15 +24,14 @@ public class LoginController extends Controller {
         Form<Login> formulario = formFactory.form(Login.class);
         formulario.bindFromRequest().get();
         if(formulario.hasErrors()){
-            return ok("/");
+            return redirect(controllers.routes.HomeController.catalog());
         }else {
 
             User aux = (formulario.bindFromRequest().get()).authenticate((formulario.bindFromRequest().get()).loginemail, (formulario.bindFromRequest().get()).loginpassword);
             if (aux != null) {
                 session("connected", aux.email);
-                return ok(
 
-                        main.render("login", Html.apply("Ingresaste Exitosamente")));
+                return redirect(controllers.routes.HomeController.catalog());
             } else {
 
 
