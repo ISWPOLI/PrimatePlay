@@ -65,7 +65,7 @@
             </div><!-- /.container-fluid -->
         </nav>
         @content
-        <footer class="footer">
+        <footer class="navbar-fixed-bottom">
             <div class="container">
                 @defining({new Date().format("dd/MM/yyyy - hh:mm")}) {fecha =>
                         @if(session.get("connected") !=null){
