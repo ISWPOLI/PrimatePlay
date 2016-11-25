@@ -34,6 +34,8 @@ public class User extends Model{
     @Constraints.Required
     @Formats.NonEmpty
     public String passconf;
+    public int tipo;
+
 
 
 

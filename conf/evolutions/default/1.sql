@@ -25,6 +25,7 @@ create table user (
   username                      varchar(255),
   pass                          varchar(255),
   passconf                      varchar(255),
+  tipo                          integer,
   constraint pk_user primary key (id)
 );
 
