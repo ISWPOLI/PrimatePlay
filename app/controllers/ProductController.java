@@ -70,6 +70,9 @@ public class ProductController extends Controller{
 
     }
 
+
+
+
     public Result getProducts(){
         List<Product> products = new Model.Finder(String.class, Product.class).all();
         return ok(toJson(products));
